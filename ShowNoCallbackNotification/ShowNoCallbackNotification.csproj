@@ -128,6 +128,13 @@
     <Compile Include="..\..\SharedClasses\ThreadingInterop.cs">
       <Link>ThreadingInterop.cs</Link>
     </Compile>
+    <Compile Include="..\..\SharedClasses\UserMessages.cs">
+      <Link>UserMessages.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\UserMessages.designer.cs">
+      <Link>UserMessages.designer.cs</Link>
+      <DependentUpon>UserMessages.cs</DependentUpon>
+    </Compile>
     <Compile Include="..\..\SharedClasses\Win32Api.cs">
       <Link>Win32Api.cs</Link>
     </Compile>
@@ -158,6 +165,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="..\..\SharedClasses\UserMessages.resx">
+      <Link>UserMessages.resx</Link>
+      <DependentUpon>UserMessages.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
