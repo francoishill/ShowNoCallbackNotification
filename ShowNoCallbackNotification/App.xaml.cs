@@ -48,7 +48,7 @@ namespace ShowNoCallbackNotification
 			if (!Enum.TryParse<ShowNoCallbackNotificationInterop.NotificationTypes>(notiftypeStr, true, out notifType))
 				notifType = ShowNoCallbackNotificationInterop.NotificationTypes.Subtle;
 
-			bool wasTimeoutMinus99forever = args.Length > 4 && args[4].Equals("-99");
+			bool wasTimeoutMinus99orMinus1forever = args.Length > 4 && (args[4].Equals("-99") || args[4].Equals("-1"));
 			string timeoutSecondsStr = args.Length > 4 ? args[4] : cDefaultTimeoutSeconds.ToString();
 			int timeoutSeconds;
 			if (!int.TryParse(timeoutSecondsStr, out timeoutSeconds)
@@ -58,7 +58,7 @@ namespace ShowNoCallbackNotification
 			
 			NotificationCount++;
 			TimeSpan? tmpTimeout = null;
-			if (!wasTimeoutMinus99forever)
+			if (!wasTimeoutMinus99orMinus1forever)
 				tmpTimeout = TimeSpan.FromSeconds(timeoutSeconds);
 			WpfNotificationWindow.ShowNotification(
 				title: title,
