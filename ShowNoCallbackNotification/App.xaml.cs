@@ -70,6 +70,10 @@ namespace ShowNoCallbackNotification
 
 		protected override void OnStartup(StartupEventArgs e)
 		{
+			Dictionary<string, string> userPrivilages;
+			if (!LicensingInterop_Client.Client_ValidateLicense(out userPrivilages, err => UserMessages.ShowErrorMessage(err)))
+				Environment.Exit(LicensingInterop_Client.cApplicationExitCodeIfLicenseFailedValidation);
+
 			//base.OnStartup(e);
 			//MainWindow not used at all
 			SingleInstanceApplicationManager<MainWindow>.CheckIfAlreadyRunningElseCreateNew(
