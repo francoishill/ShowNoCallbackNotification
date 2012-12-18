@@ -90,10 +90,14 @@ namespace ShowNoCallbackNotification
 				(args, win) =>
 				{
 					//First instance
-					SharedClasses.AutoUpdating.CheckForUpdates(
+					AutoUpdating.CheckForUpdates_ExceptionHandler(delegate
+					{
+						WpfNotificationWindow.SetCurrentVersionDisplayed(AutoUpdating.GetThisAppVersionString());
+					});
+					/*SharedClasses.AutoUpdating.CheckForUpdates(
 						//SharedClasses.AutoUpdatingForm.CheckForUpdates(
 						//exitApplicationAction: () => Dispatcher.Invoke((Action)delegate { this.Shutdown(); }),
-						ActionIfUptoDate_Versionstring: (versionstring) => WpfNotificationWindow.SetCurrentVersionDisplayed(versionstring));
+						ActionIfUptoDate_Versionstring: (versionstring) => WpfNotificationWindow.SetCurrentVersionDisplayed(versionstring));*/
 
 					ShowNotificationFromCommandlineArgs(args);
 				});
