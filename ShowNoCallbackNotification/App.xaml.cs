@@ -31,6 +31,7 @@ namespace ShowNoCallbackNotification
 		{
 			if (args.Length < 2)//Does not have at least a title
 			{
+				ShowNoCallbackNotificationInterop.Notify(null, "This notification was shown because 'ShowNotificationFromCommandlineArgs' was ran without commandline arguments."); 
 				//args = new string[] { "", "Title", "Message", "Warning", "20" };
 				if (NotificationCount == 0)
 					Environment.Exit(0);
@@ -48,17 +49,21 @@ namespace ShowNoCallbackNotification
 			if (!Enum.TryParse<ShowNoCallbackNotificationInterop.NotificationTypes>(notiftypeStr, true, out notifType))
 				notifType = ShowNoCallbackNotificationInterop.NotificationTypes.Subtle;
 
-			bool wasTimeoutMinus99orMinus1forever = args.Length > 4 && (args[4].Equals("-99") || args[4].Equals("-1"));
+			bool wasStickyOrTimeoutMinus99 = 
+				args.Length > 4 
+				&& 
+				(args[4].Equals("sticky", StringComparison.InvariantCultureIgnoreCase) 
+				|| args[4].Equals("-99")
+				|| args[4].Equals("-1"));
 			string timeoutSecondsStr = args.Length > 4 ? args[4] : cDefaultTimeoutSeconds.ToString();
 			int timeoutSeconds;
 			if (!int.TryParse(timeoutSecondsStr, out timeoutSeconds)
 				|| timeoutSeconds < 0)
 				timeoutSeconds = cDefaultTimeoutSeconds;
-
 			
 			NotificationCount++;
 			TimeSpan? tmpTimeout = null;
-			if (!wasTimeoutMinus99orMinus1forever)
+			if (!wasStickyOrTimeoutMinus99)
 				tmpTimeout = TimeSpan.FromSeconds(timeoutSeconds);
 			WpfNotificationWindow.ShowNotification(
 				title: title,
