@@ -101,6 +101,8 @@ namespace ShowNoCallbackNotification
 
 					ShowNotificationFromCommandlineArgs(args);
 				});
+
+			WpfNotificationWindow.actionToShowAboutWindow = ShowNoCallbackNotification.MainWindow.actionToShowAboutWindow;
 		}
 	}
 }

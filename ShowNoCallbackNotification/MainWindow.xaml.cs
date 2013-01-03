@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SharedClasses;
 
 namespace ShowNoCallbackNotification
 {
@@ -19,6 +20,15 @@ namespace ShowNoCallbackNotification
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		public static Action actionToShowAboutWindow = delegate
+		{
+			AboutWindow2.ShowAboutWindow(new System.Collections.ObjectModel.ObservableCollection<DisplayItem>()
+			{
+				new DisplayItem("Author", "Francois Hill"),
+				new DisplayItem("Icon(s) obtained from", null)
+			});
+		};
+
 		public MainWindow()
 		{
 			InitializeComponent();
