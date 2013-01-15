@@ -1,15 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <StartArguments>"Title" "Message" Warning -99</StartArguments>
+    <StartArguments>"Testing title" "Hallo how are you today?" info</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>"Title" "Message" Warning -99</StartArguments>
+    <StartArguments>"Testing title" "Hallo how are you today?" info</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <StartArguments>"Testing title" "Hallo how are you today?" error</StartArguments>
+    <StartArguments>"Testing title" "Hallo how are you today?" info</StartArguments>
   </PropertyGroup>
   <PropertyGroup>
     <ProjectView>ProjectFiles</ProjectView>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <StartArguments>"Testing title" "Hallo how are you today?" info</StartArguments>
   </PropertyGroup>
 </Project>

@@ -31,7 +31,7 @@ namespace ShowNoCallbackNotification
 		{
 			if (args.Length < 2)//Does not have at least a title
 			{
-				ShowNoCallbackNotificationInterop.Notify(null, "This notification was shown because 'ShowNotificationFromCommandlineArgs' was ran without commandline arguments."); 
+				ShowNoCallbackNotificationInterop.Notify(null, "This notification was shown because 'ShowNotificationFromCommandlineArgs' was ran without commandline arguments.");
 				//args = new string[] { "", "Title", "Message", "Warning", "20" };
 				if (NotificationCount == 0)
 					Environment.Exit(0);
@@ -50,9 +50,9 @@ namespace ShowNoCallbackNotification
 				notifType = ShowNoCallbackNotificationInterop.NotificationTypes.Subtle;
 
 			bool wasStickyOrTimeoutMinus99 = 
-				args.Length > 4 
-				&& 
-				(args[4].Equals("sticky", StringComparison.InvariantCultureIgnoreCase) 
+				args.Length > 4
+				&&
+				(args[4].Equals("sticky", StringComparison.InvariantCultureIgnoreCase)
 				|| args[4].Equals("-99")
 				|| args[4].Equals("-1"));
 			string timeoutSecondsStr = args.Length > 4 ? args[4] : cDefaultTimeoutSeconds.ToString();
@@ -60,17 +60,26 @@ namespace ShowNoCallbackNotification
 			if (!int.TryParse(timeoutSecondsStr, out timeoutSeconds)
 				|| timeoutSeconds < 0)
 				timeoutSeconds = cDefaultTimeoutSeconds;
-			
-			NotificationCount++;
+
 			TimeSpan? tmpTimeout = null;
 			if (!wasStickyOrTimeoutMinus99)
 				tmpTimeout = TimeSpan.FromSeconds(timeoutSeconds);
+
+			//for (int i = 0; i < 40; i++)
+			//{
+			//    tmpTimeout = TimeSpan.FromSeconds(i);
+			//foreach (ShowNoCallbackNotificationInterop.NotificationTypes nt in Enum.GetValues(typeof(ShowNoCallbackNotificationInterop.NotificationTypes)))
+			//{
+			//    notifType = nt;
+			NotificationCount++;
 			WpfNotificationWindow.ShowNotification(
-				title: title,
-				message: message,
+				title: title,// + i,
+				message: message,// + i,
 				notificationType: notifType,
 				timeout: tmpTimeout,//If was -99 it will show forever
 				onCloseCallback_WasClickedToCallback: (o, wasclickedon) => { NotificationCount--; });
+			//}
+			//}
 		}
 
 		protected override void OnStartup(StartupEventArgs e)
