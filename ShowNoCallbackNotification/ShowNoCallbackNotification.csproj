@@ -77,6 +77,9 @@
     <Reference Include="log4net">
       <HintPath>..\..\..\DLLs\RhinoLicensing\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell">
+      <HintPath>..\..\..\DLLs\Windows API\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
     <Reference Include="Rhino.Licensing">
       <HintPath>..\..\..\DLLs\RhinoLicensing\Rhino.Licensing.dll</HintPath>
     </Reference>
@@ -147,6 +150,9 @@
     <Compile Include="..\..\SharedClasses\CheckApplicationTypes.cs">
       <Link>CheckApplicationTypes.cs</Link>
     </Compile>
+    <Compile Include="..\..\SharedClasses\CompareObjects.cs">
+      <Link>CompareObjects.cs</Link>
+    </Compile>
     <Compile Include="..\..\SharedClasses\DeveloperCommunication.cs">
       <Link>DeveloperCommunication.cs</Link>
     </Compile>
@@ -164,6 +170,9 @@
     </Compile>
     <Compile Include="..\..\SharedClasses\FeedbackMessageTypes.cs">
       <Link>FeedbackMessageTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\Generics.cs">
+      <Link>Generics.cs</Link>
     </Compile>
     <Compile Include="..\..\SharedClasses\InputBoxWPF.xaml.cs">
       <Link>InputBoxWPF.xaml.cs</Link>
@@ -208,6 +217,9 @@
     <Compile Include="..\..\SharedClasses\SettingsInterop.cs">
       <Link>SettingsInterop.cs</Link>
     </Compile>
+    <Compile Include="..\..\SharedClasses\SettingsSimple.cs">
+      <Link>SettingsSimple.cs</Link>
+    </Compile>
     <Compile Include="..\..\SharedClasses\ShowNoCallbackNotificationInterop.cs">
       <Link>ShowNoCallbackNotificationInterop.cs</Link>
     </Compile>
@@ -229,8 +241,14 @@
       <Link>UserMessages.designer.cs</Link>
       <DependentUpon>UserMessages.cs</DependentUpon>
     </Compile>
+    <Compile Include="..\..\SharedClasses\WebInterop.cs">
+      <Link>WebInterop.cs</Link>
+    </Compile>
     <Compile Include="..\..\SharedClasses\Win32Api.cs">
       <Link>Win32Api.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\Windows7JumpListsInterop.cs">
+      <Link>Windows7JumpListsInterop.cs</Link>
     </Compile>
     <Compile Include="..\..\SharedClasses\WPFdraggableCanvas.cs">
       <Link>WPFdraggableCanvas.cs</Link>
